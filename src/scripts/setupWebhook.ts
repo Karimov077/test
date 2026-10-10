@@ -1,13 +1,14 @@
 import dotenv from 'dotenv';
 
+dotenv.config({ path: '.env.local' });
 dotenv.config();
 
 const botToken = process.env.BOT_TOKEN;
-const secret = process.env.WEBHOOK_SECRET;
-const webhookUrl = process.env.WEBHOOK_URL;
+const secret = process.env.APP_SECRET;
+const webhookUrl = process.argv[2];
 
 if (!botToken || !secret || !webhookUrl) {
-  throw new Error('BOT_TOKEN, WEBHOOK_SECRET and WEBHOOK_URL must be set.');
+  throw new Error('Set BOT_TOKEN and APP_SECRET in .env, then pass the deployed URL as an argument.');
 }
 
 const url = `https://api.telegram.org/bot${botToken}/setWebhook?url=${encodeURIComponent(`${webhookUrl}/api/telegram/webhook`)}&secret_token=${encodeURIComponent(secret)}`;

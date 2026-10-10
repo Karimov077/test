@@ -7,6 +7,6 @@ node_modules
 /dist
 /.vercel
 coverage
+*.tsbuildinfo
 *.log
-prisma/dev.db
 .DS_Store

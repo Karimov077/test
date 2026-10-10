@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createTelegramBot } from '@/lib/telegram';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: NextRequest) {
   const secret = req.headers.get('x-telegram-bot-api-secret-token');
 
-  if (secret !== process.env.WEBHOOK_SECRET) {
+  if (!process.env.APP_SECRET || secret !== process.env.APP_SECRET) {
     return NextResponse.json({ error: 'Invalid webhook secret.' }, { status: 401 });
   }
 

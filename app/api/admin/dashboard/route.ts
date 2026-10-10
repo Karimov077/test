@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/src/lib/prisma';
 import { verifyToken } from '@/lib/auth';
 
+export const dynamic = 'force-dynamic';
+
 function authorized(req: NextRequest) {
   const auth = req.headers.get('authorization') || '';
   if (!auth.startsWith('Bearer ')) return false;

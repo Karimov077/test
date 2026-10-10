@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'TestGennis',
-  description: 'Telegram-based student testing platform'
+  description: 'TestGennis demo admin panel'
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
