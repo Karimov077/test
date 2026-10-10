@@ -1,0 +1,12 @@
+node_modules
+.env
+.env.local
+.env.production
+.vite
+.next
+/dist
+/.vercel
+coverage
+*.log
+prisma/dev.db
+.DS_Store
