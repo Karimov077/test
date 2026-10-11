@@ -1,39 +1,43 @@
-# TestGennis
+# TestGennis - Matematika Testlari va Mashq Portali
 
-Next.js, TypeScript, Prisma, Supabase PostgreSQL va Telegram webhook asosidagi test platformasi.
+Loyiha oddiy kasrlar ustida amallar (qo‘shish, ayirish, ko‘paytirish, bo‘lish), aralash sonlar va kasrli sodda matnli masalalarni o‘rganuvchi 5-6 sinf o‘quvchilari uchun maxsus ishlab chiqilgan.
+Sayt to‘liq **mobil telefonlarga moslashtirilgan** (Mobile-First responsive dizayn).
 
-## Lokal ishga tushirish
+## Asosiy imkoniyatlar
+
+1. **8 ta to‘liq sinov va mashg‘ulot to‘plami (Jami 160 ta savol)**:
+   - ➕➖ **Oddiy kasrlarni qo‘shish va ayirish** (20 ta savol)
+   - ✖️➗ **Kasrlarni ko‘paytirish va bo‘lish** (20 ta savol)
+   - 🍰 **Aralash sonlar ustida amallar** (20 ta savol)
+   - 📖 **Matnli masalalar: Sonning kasrini topish** (20 ta savol)
+   - 🔍 **Matnli masalalar: Qoldiq va ayirmani topish** (20 ta savol)
+   - 🎯 **Matnli masalalar: Kasriga ko‘ra butun sonni topish** (20 ta savol)
+   - 🛒 **Matnli masalalar: Amaliy hayotiy hisoblar** (20 ta savol)
+   - 🔢 **EKUB va EKUK** (Kasr maxraji asosi, 20 ta savol)
+
+2. **Telefonlar uchun qulay UI (Mobile UX)**:
+   - Maxsus stacked math fraction renderlash (masalan $\frac{1}{4} + \frac{2}{4}$ ko‘rinishida o‘qish juda qulay).
+   - O‘quvchi ismi bir marta kiritilsa brauzerda avtomatik eslab qolinadi.
+   - Test jarayonida tepada yopishqoq taymer va savollarga tez o‘tish tugmalari (1 dan 20 gacha).
+   - Pastda doim ko‘rinib turuvchi "Oldingi", "Keyingi" va "Yakunlash" tugmalari.
+   - Natija chiqqandan so‘ng har bir savol bo‘yicha to‘liq yechim va tushuntirish ko‘rsatiladi.
+
+3. **Reyting va Admin boshqaruvi**:
+   - `Reyting` sahifasida eng yuqori natijalar (1, 2, 3-o‘rinlar oltin, kumush, bronza medallari bilan).
+   - Admin panel (`/admin`) orqali testlarni yoqish/o‘chirish, muddat belgilash, zaxira nusxa (JSON) olish va tiklash.
+
+## Ishga tushirish
 
 ```powershell
 npm install
-Copy-Item .env.example .env
-```
-
-`.env` ichidagi `DATABASE_URL` uchun Supabase database parolini kiriting. `BOT_TOKEN` va `APP_SECRET`ni yangilang; chatda ilgari yuborilgan Telegram tokenini BotFather orqali bekor qiling. `APP_SECRET` JWT va Telegram webhook’ni tekshirish uchun ishlatiladi.
-
-```powershell
-npm run db:push
-npm run seed
 npm run dev
 ```
 
-## Telegram webhook
+Brauzerda `http://localhost:3000` manzilini oching.
 
-```powershell
-npm run bot:setup -- https://YOUR-APP.vercel.app
-```
-
-Webhook `https://YOUR-APP.vercel.app/api/telegram/webhook` manziliga sozlanadi. Telegram va admin API’lar `ADMIN_TELEGRAM_ID`, `ADMIN_PASSWORD`, `BOT_TOKEN`, `APP_SECRET` qiymatlaridan foydalanadi.
-
-## Vercel
-
-Vercel Project Settings → Environment Variables хэсэгт `.env.example`-ийн таван утгыг тохируул. `DATABASE_URL`-ийн нууц үгийг Supabase Project Settings → Database хэсгээс ав; тусгай тэмдэгттэй бол URL-encode хийнэ. Vercel-д `DATABASE_URL` build environment-д байх шаардлагатай. API route-ууд runtime дээр ажилладаг тул build үед Supabase руу query хийхгүй.
-
-Push хийсний дараа Vercel дахин deploy хийнэ. Build шалгалт:
+## Tekshirish va build
 
 ```powershell
 npm run typecheck
 npm run build
 ```
-
-`.env`-ийг Git рүү бүү оруул. `.env.example` дотор бодит token, password, database secret бүү хадгал.
